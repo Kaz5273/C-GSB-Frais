@@ -33,3 +33,38 @@ E:\COURS BTS\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.Properties.Resources.resource
 E:\COURS BTS\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.csproj.GenerateResource.Cache
 E:\COURS BTS\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.exe
 E:\COURS BTS\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.pdb
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\WpfGSBFrais.exe.config
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.exe
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.pdb
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\WpfGSBFrais.exe
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\WpfGSBFrais.pdb
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\GSBFrais.Model.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\MySql.Data.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\Google.Protobuf.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\ZstdNet.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\System.Memory.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\System.Buffers.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\GSBFrais.Model.pdb
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\MySql.Data.xml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\Google.Protobuf.pdb
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\Google.Protobuf.xml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\System.Memory.xml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\System.Buffers.xml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.csprojResolveAssemblyReference.cache
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.csproj.WpfGSBFrais.exe.config
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\VeriFrais.g.cs
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\App.g.cs
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais_MarkupCompile.cache
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais_MarkupCompile.lref
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\VeriFrais.baml
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.g.resources
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.Properties.Resources.resources
+C:\Users\allard.kazuki\Desktop\GSB\WpfGSBFrais\obj\Debug\WpfGSBFrais.csproj.GenerateResource.Cache

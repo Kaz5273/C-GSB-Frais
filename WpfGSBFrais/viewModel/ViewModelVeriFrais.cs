@@ -14,6 +14,7 @@ namespace WpfGSBFrais.viewModel
     class ViewModelVeriFrais : viewModelBase
     {
         private DaoFicheFrais unDaoFicheFrais;
+
         private ObservableCollection<FicheFrais> listFicheFrais;
         private ObservableCollection<string> moisFicheFrais;
         private string selectedMois;
@@ -106,7 +107,8 @@ namespace WpfGSBFrais.viewModel
                                 Forfaitetape = uneLigneFraisForfait.Quantite.ToString();
                                 break;
                         }
-                    } 
+                    }
+                    ListLigneFraisHorsForfait = new ObservableCollection<LigneFraisHorsForfait>(selectedFicheFrais.LesLigneFraisHorsForfait);
                 }
             }
         }
@@ -178,16 +180,18 @@ namespace WpfGSBFrais.viewModel
             set
             {
                 listLigneFraisHorsForfait = value;
+                OnPropertyChanged("ListLigneFraisHorsForfait");
             }
         }
 
-        public ViewModelVeriFrais(DaoFicheFrais theDaoFichefrais, )
+        public ViewModelVeriFrais(DaoFicheFrais theDaoFichefrais )
         {
 
             this.unDaoFicheFrais = theDaoFichefrais;
+
             listFicheFrais = new ObservableCollection<FicheFrais>(theDaoFichefrais.SelectAll());
             moisFicheFrais = new ObservableCollection<string>(theDaoFichefrais.SelectListMois());
-            listLigneFraisHorsForfait = new ObservableCollection<LigneFraisHorsForfait>()
+            
 
 
 
