@@ -7,11 +7,10 @@
         mc:Ignorable="d"
         Title="VeriFrais" Height="450" Width="800">
     <Grid Name="Maingrid">
-        <RadioButton x:Name="radioButton" Content="Créée" HorizontalAlignment="Left" Margin="190,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.116,0.344"/>
-        <RadioButton x:Name="radioButton1" Content="Validée" HorizontalAlignment="Left" Margin="315,24,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioButton2" Content="Cloturée" HorizontalAlignment="Left" Margin="427,24,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioButton3" Content="Paiement" HorizontalAlignment="Left" Margin="553,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,-0.281"/>
-        <RadioButton x:Name="radioButton4" Content="Remboursée" HorizontalAlignment="Left" Margin="670,24,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButton" Content="Créée" IsChecked="{Binding ItsCree}" HorizontalAlignment="Left" Margin="190,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.116,0.344"/>
+        <RadioButton x:Name="radioButton1" Content="Cloturée" IsChecked="{Binding  ItsCloture}" HorizontalAlignment="Left" Margin="315,24,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButton2" Content=" Validée/Paiement" IsChecked="{Binding ItsValid}" HorizontalAlignment="Left" Margin="470,24,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButton4" Content="Remboursée" IsChecked="{Binding IsRefund}" HorizontalAlignment="Left" Margin="670,24,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBoxMois" ItemsSource="{Binding MoisFicheFrais}" SelectedItem="{Binding SelectedMois}" HorizontalAlignment="Left" Margin="28,18,0,0" VerticalAlignment="Top" Width="120"/>
         <DataGrid x:Name="LigneFraisHorsForfait" ItemsSource="{Binding ListLigneFraisHorsForfait }" HorizontalAlignment="Left" Margin="357,48,0,0" VerticalAlignment="Top" Height="134" Width="425"/>
         <Label x:Name="label" Content="Repas" HorizontalAlignment="Left" Margin="363,200,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.024,0.654"/>

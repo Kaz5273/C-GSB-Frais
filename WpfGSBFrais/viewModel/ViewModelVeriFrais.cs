@@ -24,8 +24,10 @@ namespace WpfGSBFrais.viewModel
         private string fraiskm;
         private string forfaitetape;
         private ObservableCollection<LigneFraisHorsForfait> listLigneFraisHorsForfait;
- 
-
+        private bool cree = false;
+        private bool cloture = false;
+        private bool valid = false;
+        private bool rembourser = false;
 
 
         public ObservableCollection<FicheFrais> ListFicheFrais
@@ -84,7 +86,23 @@ namespace WpfGSBFrais.viewModel
 
                 if (selectedFicheFrais != null )
                 {
-                    
+                    switch (selectedFicheFrais.UnEtat.Id)
+                    {
+                        case "CL":
+                            Cloture = true;
+                            break;
+                        case "CR":
+                            Cree = true;
+                            break;
+                        case "RB":
+                            Rembourser = true;
+                            break;
+                        case "VA":
+                            Valid = true;
+                            break;
+
+
+                    }
 
                     foreach (LigneFraisForfait uneLigneFraisForfait in selectedFicheFrais.LesLignesFraisForfait)
                     {
@@ -112,6 +130,10 @@ namespace WpfGSBFrais.viewModel
                 }
             }
         }
+
+
+
+
 
         public string Repas
         {
@@ -183,6 +205,67 @@ namespace WpfGSBFrais.viewModel
                 OnPropertyChanged("ListLigneFraisHorsForfait");
             }
         }
+
+        public bool Cree
+        {
+            get
+            {
+                return cree;
+            }
+
+            set
+            {
+                cree = value;
+
+                OnPropertyChanged("IsCree");
+            }
+        }
+
+        public bool Cloture
+        {
+            get
+            {
+                return cloture;
+            }
+
+            set
+            {
+                cloture = value;
+                OnPropertyChanged("IsCloture");
+            }
+        }
+
+        public bool Valid
+        {
+            get
+            {
+                return valid;
+            }
+
+            set
+            {
+                valid = value;
+                OnPropertyChanged("IsValid");
+            }
+        }
+
+        public bool Rembourser
+        {
+            get
+            {
+                return rembourser;
+            }
+
+            set
+            {
+                rembourser = value;
+                OnPropertyChanged("IsRefund");
+            }
+        }
+
+       
+
+        
 
         public ViewModelVeriFrais(DaoFicheFrais theDaoFichefrais )
         {

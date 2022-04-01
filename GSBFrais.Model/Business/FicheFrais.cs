@@ -9,34 +9,27 @@ namespace GSBFrais.Model.Business
 {
     public class FicheFrais
     {
-        private Visiteur unVisiteur;
-        private string mois;
-        private Etat unEtat;
-        private decimal montantValide;
-        private int nbJustificatifs;
-        private DateTime dateModif;
-        private DateTime dateTime;
 
 
 
-        public FicheFrais(string unMois, int unNbJustificatifs, decimal unMontantValide, DateTime uneDateModif, Etat unEtat, Visiteur Visiteur, FicheFrais FicheFrais)
+        public FicheFrais(string unMois, int unNbJustificatifs, decimal unMontantValide, DateTime uneDateModif, Etat leEtat, Visiteur Visiteur, FicheFrais FicheFrais)
         {
             
             this.Mois = unMois;
             this.NbJustificatifs = unNbJustificatifs;
-            this.montantValide = unMontantValide;
-            this.dateTime = uneDateModif;
-            this.unEtat = unEtat;
+            this.MontantValide = unMontantValide;
+            this.DateModif = uneDateModif;
+            this.UnEtat = leEtat;
             this.UnVisiteur = Visiteur;
         }
-        public FicheFrais(string unMois, int unNbJustificatifs, decimal unMontantValide, DateTime uneDateModif, Etat unEtat, Visiteur Visiteur)
+        public FicheFrais(string unMois, int unNbJustificatifs, decimal unMontantValide, DateTime uneDateModif, Etat leEtat, Visiteur Visiteur)
         {
 
             this.Mois = unMois;
             this.NbJustificatifs = unNbJustificatifs;
-            this.montantValide = unMontantValide;
-            this.dateTime = uneDateModif;
-            this.unEtat = unEtat;
+            this.MontantValide = unMontantValide;
+            this.DateModif = uneDateModif;
+            this.UnEtat = leEtat;
             this.UnVisiteur = Visiteur;
         }
 
@@ -50,32 +43,10 @@ namespace GSBFrais.Model.Business
         public List<LigneFraisForfait> LesLignesFraisForfait { get; set; }
         public List<LigneFraisHorsForfait> LesLigneFraisHorsForfait { get; set; }
 
-        public Visiteur UnVisiteur
-        {
-            get
-            {
-                return unVisiteur;
-            }
-
-            set
-            {
-                unVisiteur = value;
-            }
-        }
-
-        public string Mois
-        {
-            get
-            {
-                return mois;
-            }
-
-            set
-            {
-                mois = value;
-            }
-        }
-
+        public Visiteur UnVisiteur { get; set; }
+       
+        public string Mois { get; set; }
+       
         public override string ToString()
         {
             return UnVisiteur.Nom + " - " + UnVisiteur.Prenom + " - " + Mois;
