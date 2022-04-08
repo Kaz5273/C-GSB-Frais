@@ -30,7 +30,7 @@ namespace GSBFrais.Model.Data
 
         public void Update(LigneFraisForfait uneLigneFraisForfait)
         {
-            string query = " ligneFraisForfait (idVisiteur, mois, idFraitForfait, quantite) SET '" + uneLigneFraisForfait.Fichefrais + "','" + uneLigneFraisForfait.Fichefrais + "','" + uneLigneFraisForfait.Fraisforfait+ "','" + uneLigneFraisForfait.Quantite + "'";
+            string query = " ligneFraisForfait SET idVisiteur = '" + uneLigneFraisForfait.Fichefrais.UnVisiteur.Id + "', mois = '" + uneLigneFraisForfait.Fichefrais.Mois + "', idFraisForfait = '" + uneLigneFraisForfait.Fraisforfait.Id + "', quantite = '" + uneLigneFraisForfait.Quantite + "' WHERE idVisiteur = '" + uneLigneFraisForfait.Fichefrais.UnVisiteur.Id + "' AND mois = '" + uneLigneFraisForfait.Fichefrais.Mois + "' AND idFraisForfait = '" + uneLigneFraisForfait.Fraisforfait.Id + "'";
             this.unDbal.Update(query);
         }
 

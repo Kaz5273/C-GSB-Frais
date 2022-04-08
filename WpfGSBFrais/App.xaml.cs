@@ -18,7 +18,7 @@ namespace WpfGSBFrais
         private DaoEtat thedaoetat;
         private DaoFicheFrais thedaofichefrais;
         private DaoLigneFraisForfait thedaolignefraisforfait;
-        private DaoLigneFraisHorsForfait thedaofraishorsforfait;
+        private DaoLigneFraisHorsForfait thedaolignefraishorsforfait;
         private DaoVisiteurs thedaovisiteurs;
         private DaoFraisForfait thedaofraisforfait;
 
@@ -30,15 +30,15 @@ namespace WpfGSBFrais
             thedaovisiteurs = new DaoVisiteurs(thedbal);
             thedaofraisforfait = new DaoFraisForfait(thedbal);
             thedaolignefraisforfait = new DaoLigneFraisForfait(thedbal, thedaovisiteurs, thedaofraisforfait);
-            thedaofraishorsforfait = new DaoLigneFraisHorsForfait(thedbal, thedaofraisforfait, thedaovisiteurs, thedaofichefrais);
-            thedaofichefrais = new DaoFicheFrais(thedbal, thedaovisiteurs, thedaoetat, thedaolignefraisforfait, thedaofraishorsforfait);
+            thedaolignefraishorsforfait = new DaoLigneFraisHorsForfait(thedbal, thedaofraisforfait, thedaovisiteurs, thedaofichefrais);
+            thedaofichefrais = new DaoFicheFrais(thedbal, thedaovisiteurs, thedaoetat, thedaolignefraisforfait, thedaolignefraishorsforfait);
             
             
             
 
 
             // Create the startup window
-            VeriFrais wnd = new VeriFrais(thedaofichefrais);
+            VeriFrais wnd = new VeriFrais(thedaofichefrais, thedaolignefraisforfait, thedaolignefraishorsforfait, thedaoetat);
             //MainWindow wnd = new MainWindow(thedaopays, thedaofromage);
             wnd.Show();
 

@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using WpfClubFromage.viewModel;
+using WpfGSBFrais.viewModel;
+using WpfVeriFrais.viewModel;
 
 namespace WpfGSBFrais.viewModel
 {
     class ViewModelVeriFrais : viewModelBase
     {
         private DaoFicheFrais unDaoFicheFrais;
+        private DaoLigneFraisHorsForfait unDaoLigneFraisHorsForFait;
+        private DaoLigneFraisForfait unDaoLigneFraisForFait;
+        private DaoVisiteurs unDaoVisiteur;
+        private DaoEtat unDaoEtat;
 
         private ObservableCollection<FicheFrais> listFicheFrais;
         private ObservableCollection<string> moisFicheFrais;
@@ -24,10 +29,30 @@ namespace WpfGSBFrais.viewModel
         private string fraiskm;
         private string forfaitetape;
         private ObservableCollection<LigneFraisHorsForfait> listLigneFraisHorsForfait;
-        private bool cree = false;
-        private bool cloture = false;
-        private bool valid = false;
-        private bool rembourser = false;
+        private bool isCree = false;
+        private bool isCloture = false;
+        private bool isValid = false;
+        private bool isRefund = false;
+        private ICommand buttonEnregistrer;
+        private ICommand buttonModifier;
+        private ICommand buttonSupprimer;
+        private LigneFraisHorsForfait selectedLFHF;
+
+        public ViewModelVeriFrais(DaoFicheFrais theDaoFichefrais, DaoLigneFraisForfait theDaoLigneFraisForfait, DaoLigneFraisHorsForfait theDaoLigneFraisHorsForfait, DaoEtat theDaoEtat)
+        {
+
+            this.unDaoFicheFrais = theDaoFichefrais;
+            this.unDaoLigneFraisForFait = theDaoLigneFraisForfait;
+            this.unDaoLigneFraisHorsForFait = theDaoLigneFraisHorsForfait;
+            this.unDaoEtat = theDaoEtat;
+
+            listFicheFrais = new ObservableCollection<FicheFrais>(theDaoFichefrais.SelectAll());
+            moisFicheFrais = new ObservableCollection<string>(theDaoFichefrais.SelectListMois());
+
+
+
+        }
+
 
 
         public ObservableCollection<FicheFrais> ListFicheFrais
@@ -89,18 +114,17 @@ namespace WpfGSBFrais.viewModel
                     switch (selectedFicheFrais.UnEtat.Id)
                     {
                         case "CL":
-                            Cloture = true;
+                            IsCloture = true;
                             break;
                         case "CR":
-                            Cree = true;
+                            IsCree = true;
                             break;
                         case "RB":
-                            Rembourser = true;
+                            IsRefund= true;
                             break;
                         case "VA":
-                            Valid = true;
+                            IsValid = true;
                             break;
-
 
                     }
 
@@ -206,81 +230,181 @@ namespace WpfGSBFrais.viewModel
             }
         }
 
-        public bool Cree
+        public bool IsCree
         {
             get
             {
-                return cree;
+                return isCree;
             }
 
             set
             {
-                cree = value;
-
+                isCree = value;
                 OnPropertyChanged("IsCree");
             }
         }
 
-        public bool Cloture
+        public bool IsCloture
         {
             get
             {
-                return cloture;
+                return isCloture;
             }
 
             set
             {
-                cloture = value;
+                isCloture = value;
                 OnPropertyChanged("IsCloture");
             }
         }
 
-        public bool Valid
+        public bool IsValid
         {
             get
             {
-                return valid;
+                return isValid;
             }
 
             set
             {
-                valid = value;
+                isValid = value;
                 OnPropertyChanged("IsValid");
             }
         }
 
-        public bool Rembourser
+        public bool IsRefund
         {
             get
             {
-                return rembourser;
+                return isRefund;
             }
 
             set
             {
-                rembourser = value;
+                isRefund = value;
                 OnPropertyChanged("IsRefund");
             }
         }
 
-       
-
-        
-
-        public ViewModelVeriFrais(DaoFicheFrais theDaoFichefrais )
+        public ICommand ButtonEnregistrer
         {
-
-            this.unDaoFicheFrais = theDaoFichefrais;
-
-            listFicheFrais = new ObservableCollection<FicheFrais>(theDaoFichefrais.SelectAll());
-            moisFicheFrais = new ObservableCollection<string>(theDaoFichefrais.SelectListMois());
-            
-
-
+            get
+            {
+                this.buttonEnregistrer = new RelayCommand(() => EnregistrerFicheFrais(), () => true);
+                return buttonEnregistrer;
+            }
 
 
         }
 
+        public ICommand ButtonReporter
+        {
+            get
+            {
+                this.buttonModifier = new RelayCommand(() => ReporterFicheFrais(), () => true);
+                return buttonModifier;
+                
+            }
+        }
+
+        public ICommand ButtonSupprimer
+        {
+            get
+            {
+               
+                this.buttonSupprimer = new RelayCommand(() => SupprimerFicheFrais(), () => true);
+                return buttonSupprimer;
+            }
+        }
+
+        public LigneFraisHorsForfait SelectedLFHF
+        {
+            get
+            {
+                return selectedLFHF;
+            }
+
+            set
+            {
+                selectedLFHF = value;
+            }
+        }
+
+
+        private void SupprimerFicheFrais()
+        {
+
+            unDaoLigneFraisHorsForFait.Delete(SelectedLFHF);
+            ListLigneFraisHorsForfait.Remove(SelectedLFHF);
+
+        }
+
+        private void ReporterFicheFrais()
+        {
+            string mois = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00");
+            FicheFrais uneFicheFrais = unDaoFicheFrais.SelectByVisiteurMois(SelectedFicheFrais.UnVisiteur, mois);
+           
+            if (uneFicheFrais == null)
+            {
+               Etat EtatCree = unDaoEtat.SelectById("CR");
+               uneFicheFrais = new FicheFrais(mois, 0, 0, DateTime.Now, EtatCree, SelectedFicheFrais.UnVisiteur);
+                unDaoFicheFrais.Insert(uneFicheFrais);
+            }
+            SelectedLFHF.Fichefrais = uneFicheFrais;
+            unDaoLigneFraisHorsForFait.Update(SelectedLFHF);
+            ListLigneFraisHorsForfait.Remove(SelectedLFHF);
+
+
+        }
+
+        private void EnregistrerFicheFrais()
+        {
+            foreach (LigneFraisForfait uneLigneFraisForFait in selectedFicheFrais.LesLignesFraisForfait)
+            {
+                switch (uneLigneFraisForFait.Fraisforfait.Id)
+                {
+                    case "REP":
+                        if (uneLigneFraisForFait.Quantite.ToString() != Repas)
+                        {
+                            uneLigneFraisForFait.Quantite = Int32.Parse(Repas);
+                            unDaoLigneFraisForFait.Update(uneLigneFraisForFait);
+                        }
+                        break;
+
+                    case "NUI":
+                        if (uneLigneFraisForFait.Quantite.ToString() != Nuite)
+                        {
+                            uneLigneFraisForFait.Quantite = Int32.Parse(Nuite);
+                            unDaoLigneFraisForFait.Update(uneLigneFraisForFait);
+                        }
+                        break;
+
+                    case "KM":
+                        if (uneLigneFraisForFait.Quantite.ToString() != Fraiskm)
+                        {
+                            uneLigneFraisForFait.Quantite = Int32.Parse(Fraiskm);
+                            unDaoLigneFraisForFait.Update(uneLigneFraisForFait);
+                        }
+                        break;
+
+
+                    case "ETP":
+                        if (uneLigneFraisForFait.Quantite.ToString() != Forfaitetape)
+                        {
+                            uneLigneFraisForFait.Quantite = Int32.Parse(Forfaitetape);
+                            unDaoLigneFraisForFait.Update(uneLigneFraisForFait);
+                        }
+                        break;
+                }
+
+                
+               
+                
+               
+
+            }
+            
+        }
 
     }
 }

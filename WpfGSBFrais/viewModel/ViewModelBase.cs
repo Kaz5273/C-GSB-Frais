@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfClubFromage.viewModel
+namespace WpfVeriFrais.viewModel
 {
     class viewModelBase : INotifyPropertyChanged
     {
@@ -19,5 +19,7 @@ namespace WpfClubFromage.viewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(caller));
             }
         }
+
     }
+
 }

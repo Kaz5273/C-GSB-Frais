@@ -22,10 +22,12 @@ namespace WpfGSBFrais
     /// </summary>
     public partial class VeriFrais : Window
     {
-        public VeriFrais(DaoFicheFrais thedaofichefrais)
+        public VeriFrais(DaoFicheFrais thedaofichefrais, DaoLigneFraisForfait thedaolignefraisforfait, DaoLigneFraisHorsForfait thedaolignefraishorsforfait, DaoEtat theDaoEtat)
         {
             InitializeComponent();
-            Maingrid.DataContext = new viewModel.ViewModelVeriFrais(thedaofichefrais);
+            Maingrid.DataContext = new viewModel.ViewModelVeriFrais(thedaofichefrais, thedaolignefraisforfait, thedaolignefraishorsforfait, theDaoEtat);
         }
     }
+
+
 }
